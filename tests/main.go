@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-    "github.com/IslamWalid/struct-file-mapper"
+    fs_mapper "github.com/IslamWalid/struct_file_mapper"
 )
 
 type structure struct {

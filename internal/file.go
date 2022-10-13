@@ -1,4 +1,4 @@
-package fs_nodes
+package fsnode
 
 import (
 	"context"

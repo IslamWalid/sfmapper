@@ -21,7 +21,7 @@ if [[ $Int != '18' ]]; then
 fi
 
 Bool=$(cat ./mnt/Bool)
-if [[ $Bool == 'true' ]]; then
+if [[ $Bool != 'true' ]]; then
     failure 'TEST FAILED: file "Bool" does not match struct value'
 fi
 
@@ -42,4 +42,5 @@ if [[ $String != 'new string' ]]; then
 fi
 
 fusermount -zu ./mnt
+rmdir mnt
 echo 'TEST PASSED'
