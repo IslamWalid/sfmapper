@@ -17,8 +17,8 @@ type FS struct {
     UserStructRef any
 }
 
-// NewFS Creates new file system object
-func NewFS(userStruct any) *FS {
+// newFS Creates new file system object
+func newFS(userStruct any) *FS {
     return &FS{
     	UserStructRef: userStruct,
     }
@@ -38,7 +38,7 @@ func Mount(mountPoint string, userStruct any) error {
         fuse.Unmount(mountPoint)
     }()
 
-    err = fs.Serve(conn, NewFS(userStruct))
+    err = fs.Serve(conn, newFS(userStruct))
     if err != nil {
         return err
     }
