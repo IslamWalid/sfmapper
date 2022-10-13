@@ -16,6 +16,6 @@ jobs:
 
     - name: run integration test
       run: |
-        cd tests \
-        chmod a+x integration_test.sh \
+        cd tests
+        chmod a+x integration_test.sh
         ./integration_test.sh
