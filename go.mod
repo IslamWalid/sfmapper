@@ -1,4 +1,4 @@
-module IslamWalid-FuseFS
+module github.com/IslamWalid/struct-file-mapper
 
 go 1.19
 
