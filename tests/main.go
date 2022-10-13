@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-    "IslamWalid-FuseFS/fs"
+    "github.com/IslamWalid/struct-file-mapper"
 )
 
 type structure struct {
@@ -42,7 +42,7 @@ func main() {
 	}
 
 	go Routine(input)
-	err = fs.Mount("mnt", input)
+	err = fs_mapper.Mount("mnt", input)
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(1)

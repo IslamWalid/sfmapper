@@ -1,4 +1,4 @@
-package fs
+package fs_mapper
 
 import (
 	"fmt"
@@ -8,16 +8,13 @@ import (
 	"bazil.org/fuse"
 	"bazil.org/fuse/fs"
 	"github.com/fatih/structs"
+    "github.com/IslamWalid/struct-file-mapper/internal"
 )
 
 // FS represents file system type.
 type FS struct {
     // Reference to the struct that the user need to represent in the file system.
     UserStructRef any
-}
-
-type EntryGetter interface {
-	GetDirentType() fuse.DirentType
 }
 
 // NewFS Creates new file system object
@@ -51,7 +48,7 @@ func Mount(mountPoint string, userStruct any) error {
 
 // Root initialize the root directory.
 func (f *FS) Root() (fs.Node, error) {
-    dir := NewDir()
+    dir := fs_nodes.NewDir()
     structMap := structs.Map(f.UserStructRef)
     dir.Entries = f.createEntries(structMap, []string{})
     return dir, nil
@@ -63,14 +60,14 @@ func (f *FS) createEntries(structMap map[string]any, currentPath []string) map[s
 
     for key, val := range structMap {
         if reflect.TypeOf(val).Kind() == reflect.Map {
-            dir := NewDir()
+            dir := fs_nodes.NewDir()
             dir.Entries = f.createEntries(val.(map[string]any), append(currentPath, key))
             entries[key] = dir
         } else {
             filePath := make([]string, len(currentPath))
             copy(filePath, currentPath)
             content := []byte(fmt.Sprintln(reflect.ValueOf(val)))
-            file := NewFile(key, filePath, len(content), f.UserStructRef)
+            file := fs_nodes.NewFile(key, filePath, len(content), f.UserStructRef)
             entries[key] = file
         }
     }

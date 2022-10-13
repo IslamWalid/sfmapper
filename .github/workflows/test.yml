@@ -1,8 +1,6 @@
 name: fuse-fs test
 
-on:
-  push:
-    branches: [ development ]
+on: [push]
 
 jobs:
 
@@ -14,7 +12,10 @@ jobs:
     - name: install golang
       uses: actions/setup-go@v3
       with:
-        go-version: 1.18
+        go-version: 1.19
 
     - name: run integration test
-      run: ./integration_test.sh
+      run: |
+        cd tests \
+        chmod a+x integration_test.sh \
+        ./integration_test.sh

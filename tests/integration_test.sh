@@ -1,6 +1,6 @@
 #!/bin/sh
 
-go run ./demo/main.go &
+go run main.go &
 sleep 0.3
 
 String=$(cat ./mnt/String)

@@ -1,4 +1,4 @@
-package fs
+package fs_nodes
 
 import (
 	"context"
@@ -14,6 +14,10 @@ type dir struct {
 	Type       fuse.DirentType
 	Attributes fuse.Attr
 	Entries    map[string]any
+}
+
+type EntryGetter interface {
+	GetDirentType() fuse.DirentType
 }
 
 // NewDir creates new empty directory
