@@ -12,7 +12,7 @@ go get github.com/IslamWalid/struct_file_mapper
 | `func Mount(mountPoint string, structReference any) error` | Creates a filesystem in the specified mount point. |
 
 # Usage and Example
-```
+```go
 package main
 
 import (
