@@ -2,7 +2,6 @@ package struct_file_mapper
 
 import (
 	"fmt"
-	"log"
 	"reflect"
 
 	"bazil.org/fuse"
@@ -25,20 +24,27 @@ func newFS(userStruct any) *FS {
 }
 
 // Mount mounts the file system to the given mount point and starts the file system server.
-func Mount(mountPoint string, userStruct any) error {
-    conn, err := fuse.Mount(mountPoint)
+func Mount(mountPointPath string, userStruct any) error {
+    conn, err := fuse.Mount(mountPointPath)
     if err != nil {
         return err
     }
-    defer func() {
-        err := conn.Close()
-        if err != nil {
-            log.Println(err)
-        }
-        fuse.Unmount(mountPoint)
-    }()
 
     err = fs.Serve(conn, newFS(userStruct))
+    if err != nil {
+        return err
+    }
+
+    err = conn.Close()
+    if err != nil {
+        return err
+    }
+
+    return nil
+}
+
+func UnMount(mountPointPath string) error {
+    err := fuse.Unmount(mountPointPath)
     if err != nil {
         return err
     }
