@@ -3,7 +3,7 @@ Struct File Mapper uses [Filesystem in Userspace](https://en.wikipedia.org/wiki/
 
 # Install
 ```
-go get github.com/IslamWalid/struct_file_mapper
+go get github.com/IslamWalid/struct_file_mapper@latest
 ```
 
 # Functionality
