@@ -9,7 +9,13 @@ go get github.com/IslamWalid/struct_file_mapper
 # Functionality
 | Function | Description |
 |----------|-------------|
-| `func Mount(mountPoint string, structReference any) error` | Creates a filesystem in the specified mount point. |
+| `func Mount(mountPointPath string, structReference any) error` | Creates a filesystem and mounts it to the given mount point path. |
+| `func Unmount(mountPointPath string) error` | Unmount the filesystem in the given mount point path.
+
+**NOTE**: Unmount the filesystem after using it using the `Umount` function, or through the command:
+```
+fusermount -u <mount_point_path>
+```
 
 # Usage and Example
 ```go
@@ -32,6 +38,15 @@ func main() {
     	Name: "Islam",
     	Age:  22,
     }
+
+    // Create signal to recieve ctrl+c
+    sigs := make(chan os.Signal)
+    signal.Notify(sigs, syscall.SIGINT)
+
+    go func() {
+        <- sigs
+        sfmapper.UnMount("person")
+    }()
 
     // Create directory person to host the filesystem
     os.MkdirAll("person", 0777)
