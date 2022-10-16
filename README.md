@@ -24,6 +24,8 @@ package main
 import (
 	"fmt"
 	"os"
+	"os/signal"
+	"syscall"
 
 	sfmapper "github.com/IslamWalid/struct_file_mapper"
 )
