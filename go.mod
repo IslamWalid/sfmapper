@@ -1,4 +1,4 @@
-module github.com/IslamWalid/struct_file_mapper
+module github.com/IslamWalid/sfmapper
 
 go 1.19
 

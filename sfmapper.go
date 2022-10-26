@@ -1,4 +1,4 @@
-package struct_file_mapper
+package sfmapper
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 
 	"bazil.org/fuse"
 	"bazil.org/fuse/fs"
-	"github.com/IslamWalid/struct_file_mapper/internal"
+	"github.com/IslamWalid/sfmapper/internal"
 	"github.com/fatih/structs"
 )
 

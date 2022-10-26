@@ -5,7 +5,7 @@ import (
 	"os"
 	"time"
 
-    fs_mapper "github.com/IslamWalid/struct_file_mapper"
+    "github.com/IslamWalid/sfmapper"
 )
 
 type structure struct {
@@ -42,7 +42,7 @@ func main() {
 	}
 
 	go Routine(input)
-	err = fs_mapper.Mount("mnt", input)
+	err = sfmapper.Mount("mnt", input)
 	if err != nil {
 		fmt.Println(err.Error())
 		os.Exit(1)
