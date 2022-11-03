@@ -23,13 +23,13 @@ type EntryGetter interface {
 // NewDir creates new empty directory
 func NewDir() *dir {
 	return &dir{
-		Type:       fuse.DT_Dir,
+		Type: fuse.DT_Dir,
 		Attributes: fuse.Attr{
-			Inode:  0,
-			Atime:  time.Now(),
-			Mtime:  time.Now(),
-			Ctime:  time.Now(),
-			Mode:   os.ModeDir | 0o555,
+			Inode: 0,
+			Atime: time.Now(),
+			Mtime: time.Now(),
+			Ctime: time.Now(),
+			Mode:  os.ModeDir | 0o555,
 		},
 		Entries: map[string]any{},
 	}
