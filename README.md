@@ -1,12 +1,14 @@
 # Struct File Mapper
 Struct File Mapper uses [Filesystem in Userspace](https://en.wikipedia.org/wiki/Filesystem_in_Userspace) feature in Linux systems to map in-memory data **(user struct)** to accessible file system.
 
-# Install
+# Package
+- **Get the package:**
 ```
-go get github.com/IslamWalid/struct_file_mapper@latest
+go get github.com/IslamWalid/struct_file_mapper
 ```
 
-# Functionality
+- **Functionality:**
+
 | Function | Description |
 |----------|-------------|
 | `func Mount(mountPointPath string, structReference any) error` | Creates a filesystem and mounts it to the given mount point path. |
